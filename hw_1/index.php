@@ -92,6 +92,13 @@ foreach ($cars as $name => $car) {
 echo '<br><hr><br>';
 
 $length = 10;
+$style = '
+<style>
+    tr td:first-child, thead {
+        font-weight: bold;
+    }
+</style>
+';
 $html = '';
 $th = '<table style="text-align: center;border: 1px solid black;"><tbody><thead><tr><th>-</th>';
 for ($i=1; $i <= $length; $i++) {
@@ -110,4 +117,4 @@ for ($i=1; $i <= $length; $i++) {
 }
 $th .= '</tr></thead>';
 $html .= '</tbody></table>';
-echo $th.$html;
+echo $style.$th.$html;
