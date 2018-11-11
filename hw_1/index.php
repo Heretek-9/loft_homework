@@ -7,7 +7,7 @@ echo '<br>';
 echo 'Мне '.$age.' лет';
 echo '<br>';
 
-echo '“!|\/’”\\';
+echo '" ! | \\ / \' " \\';
 echo '<br>';
 
 echo '<br><hr><br>';
