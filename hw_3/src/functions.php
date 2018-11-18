@@ -87,15 +87,15 @@ function task2()
     $originalArray = json_decode(file_get_contents('output.json'), true);
     $changedArray = json_decode(file_get_contents('output2.json'), true);
 
-    $diff = arrayCompare($originalArray, $changedArray);
+    $differences = arrayCompare($originalArray, $changedArray);
 
     /*echo '<pre>';
     print_r($originalArray);
     print_r($changedArray);
     echo '</pre>';*/
 
-    foreach ($diff as $value) {
-        echo 'Путь - '.$value.'<br>';
+    foreach ($differences as $difference) {
+        echo 'Путь - '.$difference.'<br>';
     }
 }
 

@@ -1,14 +1,20 @@
 <?php
 function task1($lines, $return = false)
 {
-    $result = '';
-    foreach ($lines as $line) {
-        $result .= '<p>'.$line.'</p>';
+    if (empty($lines)) {
+        echo 'Входящий массив строк пустой';
+        return false;
     }
+
     if ($return) {
-        return $result;
+        return '<p>'.implode('</p><p>', $lines).'</p>';
+    } else {
+        $result = '';
+        foreach ($lines as $line) {
+            $result .= '<p>'.$line.'</p>';
+        }
+        echo $result;
     }
-    echo $result;
 }
 
 function task2($action)
@@ -61,20 +67,20 @@ function task2($action)
             break;
         
         default:
-            $text = 'Неизвестное действие';
+            $text = $action.' - Неизвестное действие';
             break;
     }
     echo $text;
 }
 
-function task3($x, $y)
+function task3($numRows, $numColumns)
 {
-    if ($x < 1 || intval($x) != $x) {
-        echo $x.' - некорректное число';
+    if ($numRows < 1 || intval($numRows) != $numRows) {
+        echo $numRows.' - некорректное число';
         return false;
     }
-    if ($y < 1 || intval($y) != $y) {
-        echo $y.' - некорректное число';
+    if ($numColumns < 1 || intval($numColumns) != $numColumns) {
+        echo $numColumns.' - некорректное число';
         return false;
     }
     $style = '
@@ -88,25 +94,25 @@ function task3($x, $y)
     $html = '';
     $thFinished = false;
     $th = '<table style="text-align: center;border: 1px solid black;"><tbody><thead><tr><th>-</th>';
-    for ($i = 1; $i <= $y; $i++) {
-        if ($x < $y && $i <= $x) {
-            $th .= '<th>'.$i.'</th>';
+    for ($columnIndex = 1; $columnIndex <= $numColumns; $columnIndex++) {
+        if ($numRows < $numColumns && $columnIndex <= $numRows) {
+            $th .= '<th>'.$columnIndex.'</th>';
         }
 
-        if ($i <= $y) {
-            $html .= '<tr><td>'.$i.'</td>';
+        if ($columnIndex <= $numColumns) {
+            $html .= '<tr><td>'.$columnIndex.'</td>';
         } else {
             $html .= '<tr><td> </td>';
         }
         
-        for ($j = 1; $j <= $x; $j++) {
-            if ($x > $y && $j <= $x && !$thFinished) {
-                $th .= '<th>'.$j.'</th>';
-                if ($j >= $x) {
+        for ($rowIndex = 1; $rowIndex <= $numRows; $rowIndex++) {
+            if ($numRows > $numColumns && $rowIndex <= $numRows && !$thFinished) {
+                $th .= '<th>'.$rowIndex.'</th>';
+                if ($rowIndex >= $numRows) {
                     $thFinished = true;
                 }
             }
-            $html .= '<td>' . ($i * $j) . '</td>';
+            $html .= '<td>' . ($columnIndex * $rowIndex) . '</td>';
         }
         $html .= '</tr>';
     }
