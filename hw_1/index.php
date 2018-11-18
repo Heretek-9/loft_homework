@@ -27,7 +27,7 @@ echo '<br><hr><br>';
 $age = mt_rand(0, 100);
 
 if ($age >= 18 && $age <= 65) {
-    echo 'Вам   еще работать и работать';
+    echo 'Вам еще работать и работать';
 } elseif ($age > 65) {
     echo 'Вам пора на пенсию';
 } elseif ($age <= 1 && $age >= 17) {
@@ -101,10 +101,10 @@ $style = '
 ';
 $html = '';
 $th = '<table style="text-align: center;border: 1px solid black;"><tbody><thead><tr><th>-</th>';
-for ($i=1; $i <= $length; $i++) {
+for ($i = 1; $i <= $length; $i++) {
     $th .= '<th>'.$i.'</th>';
     $html .= '<tr><td>'.$i.'</td>';
-    for ($j=1; $j <= $length; $j++) {
+    for ($j = 1; $j <= $length; $j++) {
         if ($i % 2 == 0 && $j % 2 == 0) {
             $html .= '<td>('.($i*$j).')</td>';
         } elseif ($i % 2 == 1 && $j % 2 == 1) {
