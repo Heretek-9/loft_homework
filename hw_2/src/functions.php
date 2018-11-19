@@ -17,59 +17,50 @@ function task1($lines, $return = false)
     }
 }
 
-function task2($action)
+function task2()
 {
     $args = func_get_args();
-    unset($args[0]);
-
-    if (!isset($args[1])) {
-        echo 'Не переданы числа';
+    
+    if (count($args) < 2) {
+        echo 'Недостаточно входящих данных для работы функции';
         return false;
     }
 
-    $text = 'Результат: '.floatval($args[1]);
+    $action = array_shift($args);
 
-    if (!isset($args[2])) {
+    if (!in_array($action, array('+', '-', '*', '/'))) {
+        echo $action.' - Неизвестное действие';
+        return false;
+    }
+
+    $result = floatval(array_shift($args));
+    $text = 'Результат: '.$result;
+
+    if (count($args) === 2) {
         echo $text;
         return false;
     }
 
-    $result = floatval($args[1]);
-    unset($args[1]);
-    switch ($action) {
-        case '+':
-            foreach ($args as $arg) {
-                $text .= ' + '.floatval($arg);
+    foreach ($args as $arg) {
+        $text .= ' '.$action.' '.floatval($arg);
+
+        switch ($action) {
+            case '+':
                 $result += floatval($arg);
-            }
-            $text .= ' = '.$result;
-            break;
-        case '-':
-            foreach ($args as $arg) {
-                $text .= ' - '.floatval($arg);
+                break;
+            case '-':
                 $result -= floatval($arg);
-            }
-            $text .= ' = '.$result;
-            break;
-        case '*':
-            foreach ($args as $arg) {
-                $text .= ' * '.floatval($arg);
+                break;
+            case '*':
                 $result *= floatval($arg);
-            }
-            $text .= ' = '.$result;
-            break;
-        case '/':
-            foreach ($args as $arg) {
-                $text .= ' / '.floatval($arg);
+                break;
+            case '/':
                 $result /= floatval($arg);
-            }
-            $text .= ' = '.$result;
-            break;
-        
-        default:
-            $text = $action.' - Неизвестное действие';
-            break;
+                break;
+        }
     }
+
+    $text .= ' = '.$result;
     echo $text;
 }
 
