@@ -1,0 +1,6 @@
+{
+    "require": {
+        "illuminate/database": "^5.7",
+        "symfony/dotenv": "^4.2"
+    }
+}
